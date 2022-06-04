@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "comheader": "/components/comheader/comheader",
+    "tui-input": "/node-modules/thorui-uni/lib/thorui/tui-input/tui-input",
+    "tui-icon": "/node-modules/thorui-uni/lib/thorui/tui-icon/tui-icon",
+    "tui-tabs": "/node-modules/thorui-uni/lib/thorui/tui-tabs/tui-tabs",
+    "mescroll-uni": "/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-uni",
+    "index-card": "/components/indexCard/indexCard",
+    "tui-modal": "/node-modules/thorui-uni/lib/thorui/tui-modal/tui-modal"
+  }
+}

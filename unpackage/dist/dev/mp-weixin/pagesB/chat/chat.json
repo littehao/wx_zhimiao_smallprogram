@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "comheader": "/components/comheader/comheader",
+    "message-input": "/pagesB/components/message-input/message-input",
+    "message-list": "/pagesB/components/message-list/index"
+  }
+}

@@ -1,0 +1,5 @@
+
+.accept-scroll{
+	height: calc(100vh - 44px - 41px - 25px);
+}
+

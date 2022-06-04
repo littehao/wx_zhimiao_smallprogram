@@ -1,0 +1,237 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},{
+		    "path" : "pages/my/my",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},{
+		    "path" : "pages/msg/msg",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},{
+		    "path" : "pages/release/release",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+        ,{
+            "path" : "pages/demand-details/demand-details",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+		    "path" : "pages/login/login",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+        ,{
+            "path" : "pages/anti-counterfeiting/anti-counterfeiting",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"subPackages": [{
+		"root": "pagesA",
+			"pages": [
+				{
+					"path": "select-city/select-city",
+					"style" :
+					{
+					    "navigationBarTitleText": "",
+					    "enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "location/location",
+					"style" :
+					{
+					    "navigationBarTitleText": "",
+					    "enablePullDownRefresh": false
+					}
+				}
+			    ,{
+                    "path" : "search/search",
+                    "style" :                                                                                    
+						{
+							"navigationBarTitleText": "",
+							"enablePullDownRefresh": false
+						}
+                }
+                ,{
+                    "path" : "focus-list/focus-list",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "fans-list/fans-list",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "mydemand/mydemand",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "myaccept/myaccept",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "agreement/agreement",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "myinfo/myinfo",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "Introduction/Introduction",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "mylabel/mylabel",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "user/user",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+		}, {
+			"root": "pagesB",
+			"pages": [
+				{
+					"path": "chat/chat",
+					"style" :
+					{
+					    "navigationBarTitleText": "",
+					    "enablePullDownRefresh": false
+					}
+				}
+			    ,{
+                    "path" : "notice/notice",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+	}],
+	"tabBar": {
+	    "color": "#6e6d6b",
+	    "selectedColor": "#e64340",
+	    "borderStyle": "black",
+	    "backgroundColor": "#fff",
+		"fontSize":"12px",
+	    "list": [
+	        {
+	            "pagePath": "pages/index/index",
+	            "iconPath": "/static/images/home-off.png",
+	            "selectedIconPath": "/static/images/home-on.png",
+	            "text": "首页"
+	        },
+	        {
+	            "pagePath": "pages/release/release",
+	            "iconPath": "/static/images/release-off.png",
+	            "selectedIconPath": "/static/images/release-on.png",
+	            "text": "发布需求"
+	        },
+	        {
+	            "pagePath": "pages/msg/msg",
+	            "iconPath": "/static/images/msg-off.png",
+	            "selectedIconPath": "/static/images/msg-on.png",
+	            "text": "消息"
+	        },
+	        {
+	            "pagePath": "pages/my/my",
+	            "iconPath": "/static/images/my-off.png",
+	            "selectedIconPath": "/static/images/my-on.png",
+	            "text": "我的"
+	        }
+	    ]
+	},
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"tui-(.*)": "thorui-uni/lib/thorui/tui-$1/tui-$1.vue"
+		}
+	},
+	"globalStyle": {
+		"navigationStyle":"custom",
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}

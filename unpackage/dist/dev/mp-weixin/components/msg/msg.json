@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "tui-swipe-action": "/node-modules/thorui-uni/lib/thorui/tui-swipe-action/tui-swipe-action",
+    "tui-icon": "/node-modules/thorui-uni/lib/thorui/tui-icon/tui-icon"
+  },
+  "component": true
+}

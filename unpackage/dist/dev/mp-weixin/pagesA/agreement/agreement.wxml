@@ -1,0 +1,1 @@
+<view class="agreement-page bgF7F8FA h-100vh flex flex-column"><comheader vue-id="95285336-1" title="服务协议" bind:__l="__l"></comheader></view>

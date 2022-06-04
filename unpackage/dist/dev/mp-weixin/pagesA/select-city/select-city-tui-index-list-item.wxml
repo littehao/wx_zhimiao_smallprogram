@@ -1,0 +1,1 @@
+<view class="fs-28 ft1D2129 p-1 bgF2F3F5 mr-2 mb-2">{{entity.name}}</view>

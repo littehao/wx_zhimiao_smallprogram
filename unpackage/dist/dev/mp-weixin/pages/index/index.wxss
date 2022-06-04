@@ -1,0 +1,28 @@
+
+.top-radius.data-v-57280228{
+    height: 199px;
+    border-radius: 0px 0px 55px 55px;
+}
+.welcome.data-v-57280228{
+    font-family: PingFang SC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #FFFFFF;
+    height: 40px;
+    line-height: 30px;
+}
+.header-rearch.data-v-57280228{
+    height: 32px;
+    line-height: 32px;
+}
+.header-rearch  .weui-input.data-v-57280228{
+    height: 32px;
+    line-height: 32px;
+}
+.index-swiper.data-v-57280228{
+    height: 280rpx;
+}
+.van-tabs__scroll.data-v-57280228 {
+    background-color: transparent !important;
+}
+	
+
