@@ -55,8 +55,12 @@
 
 <script>
 	//小程序需要在后台添加业务域名 https://apis.map.qq.com
-	import QQMapWX from '@/utils/qqmap-wx-jssdk.min.js'
+	import QQMapWX from '@/pagesA/utils/qqmap-wx-jssdk.min.js'
+	import tuiFormButton from '@/pagesA/components/tui-form-button/tui-form-button.vue'
+	import tuiListCell from '@/pagesA/components/tui-list-cell/tui-list-cell.vue'
+	import tuiLoadmore from '@/pagesA/components/tui-loadmore/tui-loadmore.vue'
 	export default {
+		components:{tuiFormButton,tuiListCell,tuiLoadmore},
 		data() {
 			return {
 				ani: true,
@@ -82,6 +86,9 @@
 		},
 		onLoad(options) {
 			//POI搜索关键字
+			if(options.from){
+				this.from =  'home'
+			}
 			this.keywords = options.keywords || '车站';
 			setTimeout(() => {
 				let sys = uni.getSystemInfoSync();
@@ -271,6 +278,7 @@
 				// #endif
 
 				// #ifndef H5
+				let that = this
 				this.qqmapsdk.getSuggestion({
 					keyword: keywords,
 					page_index: this.pageIndex,
@@ -280,18 +288,19 @@
 					},
 					success: res => {
 						let data = res.data || [];
-						this.calculateDistance(data, d => {
+						console.log(data)
+						that.calculateDistance(data, d => {
 							if (d) {
 								let arr = d.elements || [];
 								for (let i = 0, len = data.length; i < len; i++) {
 									data[i].distance = arr[i].distance;
 								}
 							}
-							this.address = this.address.concat(data);
-							this.pageIndex++;
-							this.loading = false;
+							that.address = that.address.concat(data);
+							that.pageIndex++;
+							that.loading = false;
 							if (data.length < 10) {
-								this.pullUpOn = false;
+								that.pullUpOn = false;
 							}
 						});
 					},
@@ -323,9 +332,14 @@
 			},
 			btnFix() {
 				let item = this.address[this.index];
-				let content = `您选择的地点为：${item.title},longitude：${item.location.lng},latitude：${item.location.lat}`;
+				console.log(item)
+				let content = `${this.from == 'home'?'将查看该地址附近需求':'您选择的地点为'}：${item.province}${item.city}${item.title}`;
 				this.tui.modal('地图选点', content, false, () => {
-					uni.$emit('updateData',item)
+					if(this.from == 'home'){
+						this.$store.commit('setcustomAxis',item)
+					} else {
+						uni.$emit('updateData',{...item,type:'release'})
+					}
 					this.back();
 				});
 			}

@@ -14,7 +14,9 @@
 
 <script>
 	import { mapGetters } from 'vuex'
+	import tuiTextarea from '@/pagesA/components/tui-textarea/tui-textarea.vue'
 	export default {
+		components:{tuiTextarea},
 		data() {
 			return {
 				intro:''

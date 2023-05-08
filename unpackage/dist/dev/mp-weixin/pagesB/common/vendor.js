@@ -1,14 +1,21 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pagesB/common/vendor"],{
 
-/***/ 345:
-/*!*************************************************************!*\
-  !*** /Users/huhao/Desktop/www/wx_zhimiao/utils/emojiMap.js ***!
-  \*************************************************************/
+/***/ 566:
+/*!********************************************************************!*\
+  !*** /Users/huhao/Desktop/www/wx_zhimiao/pagesB/utils/emojiMap.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.emojiName = exports.emojiMap = exports.emojiUrl = void 0;var emojiUrl = 'https://web.sdk.qcloud.com/im/assets/emoji/';exports.emojiUrl = emojiUrl;
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.emojiUrl = exports.emojiName = exports.emojiMap = void 0;
+var emojiUrl = 'https://web.sdk.qcloud.com/im/assets/emoji/';
+exports.emojiUrl = emojiUrl;
 var emojiMap = {
   '[NO]': 'emoji_0@2x.png',
   '[OK]': 'emoji_1@2x.png',
@@ -151,32 +158,40 @@ var emojiMap = {
   '[麦克风]': 'emoji_138@2x.png',
   '[麻将]': 'emoji_139@2x.png',
   '[鼓掌]': 'emoji_140@2x.png',
-  '[龇牙]': 'emoji_141@2x.png' };exports.emojiMap = emojiMap;
-
-var emojiName = ['[龇牙]', '[调皮]', '[流汗]', '[偷笑]', '[再见]', '[敲打]', '[擦汗]', '[猪头]', '[玫瑰]', '[流泪]', '[大哭]', '[嘘]', '[酷]', '[抓狂]', '[委屈]', '[便便]', '[炸弹]', '[菜刀]', '[可爱]', '[色]', '[害羞]', '[得意]', '[吐]', '[微笑]', '[怒]', '[尴尬]', '[惊恐]', '[冷汗]', '[爱心]', '[示爱]', '[白眼]', '[傲慢]', '[难过]', '[惊讶]', '[疑问]', '[困]', '[么么哒]', '[憨笑]', '[爱情]', '[衰]', '[撇嘴]', '[阴险]', '[奋斗]', '[发呆]', '[右哼哼]', '[抱抱]', '[坏笑]', '[飞吻]', '[鄙视]', '[晕]', '[大兵]', '[可怜]', '[强]', '[弱]', '[握手]', '[胜利]', '[抱拳]', '[凋谢]', '[米饭]', '[蛋糕]', '[西瓜]', '[啤酒]', '[瓢虫]', '[勾引]', '[OK]', '[爱你]', '[咖啡]', '[月亮]', '[刀]', '[发抖]', '[差劲]', '[拳头]', '[心碎了]', '[太阳]', '[礼物]', '[皮球]', '[骷髅]', '[挥手]', '[闪电]', '[饥饿]', '[困]', '[咒骂]', '[折磨]', '[抠鼻]', '[鼓掌]', '[糗大了]', '[左哼哼]', '[打哈欠]', '[快哭了]', '[吓]', '[篮球]', '[乒乓]', '[NO]', '[跳跳]', '[怄火]', '[转圈]', '[磕头]', '[回头]', '[跳绳]', '[激动]', '[街舞]', '[献吻]', '[左太极]', '[右太极]', '[闭嘴]', '[猫咪]', '[红双喜]', '[鞭炮]', '[红灯笼]', '[麻将]', '[麦克风]', '[礼品袋]', '[信封]', '[象棋]', '[彩带]', '[蜡烛]', '[爆筋]', '[棒棒糖]', '[奶瓶]', '[面条]', '[香蕉]', '[飞机]', '[左车头]', '[车厢]', '[右车头]', '[多云]', '[下雨]', '[钞票]', '[熊猫]', '[灯泡]', '[风车]', '[闹钟]', '[雨伞]', '[彩球]', '[钻戒]', '[沙发]', '[纸巾]', '[手枪]', '[青蛙]'];exports.emojiName = emojiName;
+  '[龇牙]': 'emoji_141@2x.png'
+};
+exports.emojiMap = emojiMap;
+var emojiName = ['[龇牙]', '[调皮]', '[流汗]', '[偷笑]', '[再见]', '[敲打]', '[擦汗]', '[猪头]', '[玫瑰]', '[流泪]', '[大哭]', '[嘘]', '[酷]', '[抓狂]', '[委屈]', '[便便]', '[炸弹]', '[菜刀]', '[可爱]', '[色]', '[害羞]', '[得意]', '[吐]', '[微笑]', '[怒]', '[尴尬]', '[惊恐]', '[冷汗]', '[爱心]', '[示爱]', '[白眼]', '[傲慢]', '[难过]', '[惊讶]', '[疑问]', '[困]', '[么么哒]', '[憨笑]', '[爱情]', '[衰]', '[撇嘴]', '[阴险]', '[奋斗]', '[发呆]', '[右哼哼]', '[抱抱]', '[坏笑]', '[飞吻]', '[鄙视]', '[晕]', '[大兵]', '[可怜]', '[强]', '[弱]', '[握手]', '[胜利]', '[抱拳]', '[凋谢]', '[米饭]', '[蛋糕]', '[西瓜]', '[啤酒]', '[瓢虫]', '[勾引]', '[OK]', '[爱你]', '[咖啡]', '[月亮]', '[刀]', '[发抖]', '[差劲]', '[拳头]', '[心碎了]', '[太阳]', '[礼物]', '[皮球]', '[骷髅]', '[挥手]', '[闪电]', '[饥饿]', '[困]', '[咒骂]', '[折磨]', '[抠鼻]', '[鼓掌]', '[糗大了]', '[左哼哼]', '[打哈欠]', '[快哭了]', '[吓]', '[篮球]', '[乒乓]', '[NO]', '[跳跳]', '[怄火]', '[转圈]', '[磕头]', '[回头]', '[跳绳]', '[激动]', '[街舞]', '[献吻]', '[左太极]', '[右太极]', '[闭嘴]', '[猫咪]', '[红双喜]', '[鞭炮]', '[红灯笼]', '[麻将]', '[麦克风]', '[礼品袋]', '[信封]', '[象棋]', '[彩带]', '[蜡烛]', '[爆筋]', '[棒棒糖]', '[奶瓶]', '[面条]', '[香蕉]', '[飞机]', '[左车头]', '[车厢]', '[右车头]', '[多云]', '[下雨]', '[钞票]', '[熊猫]', '[灯泡]', '[风车]', '[闹钟]', '[雨伞]', '[彩球]', '[钻戒]', '[沙发]', '[纸巾]', '[手枪]', '[青蛙]'];
+exports.emojiName = emojiName;
 
 /***/ }),
 
-/***/ 358:
-/*!*******************************************************************!*\
-  !*** /Users/huhao/Desktop/www/wx_zhimiao/utils/message-facade.js ***!
-  \*******************************************************************/
+/***/ 657:
+/*!**************************************************************************!*\
+  !*** /Users/huhao/Desktop/www/wx_zhimiao/pagesB/utils/message-facade.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.parseText = parseText;exports.parseGroupSystemNotice = parseGroupSystemNotice;exports.parseGroupTip = parseGroupTip;exports.parseImage = parseImage;exports.parseVideo = parseVideo;exports.parseAudio = parseAudio;var _emojiMap = __webpack_require__(/*! ./emojiMap */ 345);function _createForOfIteratorHelper(o, allowArrayLike) {var it;if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {if (it) o = it;var i = 0;var F = function F() {};return { s: F, n: function n() {if (i >= o.length) return { done: true };return { done: false, value: o[i++] };}, e: function e(_e) {throw _e;}, f: F };}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}var normalCompletion = true,didErr = false,err;return { s: function s() {it = o[Symbol.iterator]();}, n: function n() {var step = it.next();normalCompletion = step.done;return step;}, e: function e(_e2) {didErr = true;err = _e2;}, f: function f() {try {if (!normalCompletion && it.return != null) it.return();} finally {if (didErr) throw err;}} };}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}
 
 
-
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parseAudio = parseAudio;
+exports.parseImage = parseImage;
+exports.parseText = parseText;
+exports.parseVideo = parseVideo;
+var _emojiMap = __webpack_require__(/*! ./emojiMap */ 566);
 /** 传入message.element（群系统消息SystemMessage，群提示消息GroupTip除外）
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     * content = {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     *  type: 'TIMTextElem',
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     *  content: {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     *    text: 'AAA[龇牙]AAA[龇牙]AAA[龇牙AAA]'
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     *  }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     *}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     **/
+ * content = {
+ *  type: 'TIMTextElem',
+ *  content: {
+ *    text: 'AAA[龇牙]AAA[龇牙]AAA[龇牙AAA]'
+ *  }
+ *}
+ **/
 // 群提示消息的含义 (opType)
 
 var GROUP_TIP_TYPE = {
@@ -190,202 +205,75 @@ var GROUP_TIP_TYPE = {
   GROUP_INFO_MODIFIED: 6,
   // 修改群资料，转让群组为该类型，msgBody.msgGroupNewInfo.ownerAccount表示新群主的ID
   MEMBER_INFO_MODIFIED: 7 // 修改群成员信息
-};
-// 解析小程序text, 表情信息也是[嘻嘻]文本
+}; // 解析小程序text, 表情信息也是[嘻嘻]文本
 
 function parseText(message) {
+  // console.log(message,'消息--------------------')
   var renderDom = [];
   var temp = message.payload.text;
   var left = -1;
   var right = -1;
-
   while (temp !== '') {
     left = temp.indexOf('[');
     right = temp.indexOf(']');
-
     switch (left) {
       case 0:
         if (right === -1) {
           renderDom.push({
             name: 'span',
-            text: temp });
-
+            text: temp
+          });
           temp = '';
         } else {
           var _emoji = temp.slice(0, right + 1);
-
           if (_emojiMap.emojiMap[_emoji]) {
             renderDom.push({
               name: 'img',
-              src: _emojiMap.emojiUrl + _emojiMap.emojiMap[_emoji] });
-
+              src: _emojiMap.emojiUrl + _emojiMap.emojiMap[_emoji]
+            });
             temp = temp.substring(right + 1);
           } else {
             renderDom.push({
               name: 'span',
-              text: '[' });
-
+              text: '['
+            });
             temp = temp.slice(1);
           }
         }
-
         break;
-
       case -1:
         renderDom.push({
           name: 'span',
-          text: temp });
-
+          text: temp
+        });
         temp = '';
         break;
-
       default:
         renderDom.push({
           name: 'span',
-          text: temp.slice(0, left) });
-
+          text: temp.slice(0, left)
+        });
         temp = temp.substring(left);
-        break;}
-
+        break;
+    }
   }
-
   return renderDom;
 } // 解析群系统消息
-
-function parseGroupSystemNotice(message) {var
-
-  payload =
-  message.payload;
-  var groupName = payload.groupProfile.name || payload.groupProfile.groupID;var
-
-  groupID =
-  payload.groupProfile.groupID;
-  var text;
-
-  switch (payload.operationType) {
-    case 1:
-      text = "".concat(payload.operatorID, " \u7533\u8BF7\u52A0\u5165\u7FA4\u7EC4\uFF1A").concat(groupName, "\uFF08\u7FA4ID:").concat(groupID, ")");
-      break;
-
-    case 2:
-      text = "\u6210\u529F\u52A0\u5165\u7FA4\u7EC4\uFF1A".concat(groupName, " \uFF08\u7FA4ID:").concat(groupID, ")");
-      break;
-
-    case 3:
-      text = "\u7533\u8BF7\u52A0\u5165\u7FA4\u7EC4\uFF1A".concat(groupName, " \uFF08\u7FA4ID:").concat(groupID, ")\u88AB\u62D2\u7EDD");
-      break;
-
-    case 4:
-      text = "\u88AB\u7BA1\u7406\u5458".concat(payload.operatorID, "\u8E22\u51FA\u7FA4\u7EC4\uFF1A").concat(groupName, "\uFF08\u7FA4ID:").concat(groupID, ")");
-      break;
-
-    case 5:
-      text = "\u7FA4\uFF1A".concat(groupName, " \uFF08\u7FA4ID:").concat(groupID, ")\u5DF2\u88AB").concat(payload.operatorID, "\u89E3\u6563");
-      break;
-
-    case 6:
-      text = "\u6211\uFF08\u7528\u6237ID:".concat(payload.operatorID, "\uFF09\u6210\u529F\u521B\u5EFA\u7FA4\u804A:").concat(groupName, "\uFF08\u7FA4ID:").concat(groupID, ")");
-      break;
-
-    case 7:
-      text = "\u7528\u6237ID\uFF1A".concat(payload.operatorID, "\u9080\u8BF7\u4F60\u52A0\u7FA4\uFF1A").concat(groupName, "\uFF08\u7FA4ID:").concat(groupID, ")");
-      break;
-
-    case 8:
-      text = "\u4F60\u9000\u51FA\u7FA4\u7EC4\uFF1A".concat(groupName, "\uFF08\u7FA4ID:").concat(groupID, ")");
-      break;
-
-    case 9:
-      text = "\u4F60\u88AB".concat(payload.operatorID, "\u8BBE\u7F6E\u4E3A\u7FA4\uFF1A").concat(groupName, "\uFF08\u7FA4ID:").concat(groupID, ")\u7684\u7BA1\u7406\u5458");
-      break;
-
-    case 10:
-      text = "\u4F60\u88AB".concat(payload.operatorID, "\u64A4\u9500\u7FA4\uFF1A").concat(groupName, " \uFF08\u7FA4ID:").concat(groupID, ")\u7684\u7BA1\u7406\u5458\u8EAB\u4EFD");
-      break;
-
-    case 255:
-      text = "\u81EA\u5B9A\u4E49\u7FA4\u7CFB\u7EDF\u901A\u77E5: ".concat(payload.userDefinedField);
-      break;}
-
-
-  return text;
-} // 解析群提示消息
-
-function parseGroupTip(message) {var
-
-  payload =
-  message.payload;
-  var userName = message.nick || payload.userIDList.join(',');
-  var tip;
-  var user;
-
-  switch (payload.operationType) {
-    case GROUP_TIP_TYPE.MEMBER_JOIN:
-      tip = "".concat(userName, " \u52A0\u5165\u7FA4\u804A");
-      break;
-
-    case GROUP_TIP_TYPE.MEMBER_QUIT:
-      tip = "\u7FA4\u6210\u5458\u9000\u7FA4\uFF1A".concat(userName);
-      break;
-
-    case GROUP_TIP_TYPE.MEMBER_KICKED_OUT:
-      tip = "\u7FA4\u6210\u5458\u88AB\u8E22\uFF1A".concat(userName);
-      break;
-
-    case GROUP_TIP_TYPE.MEMBER_SET_ADMIN:
-      tip = "".concat(payload.operatorID, "\u5C06 ").concat(userName, "\u8BBE\u7F6E\u4E3A\u7BA1\u7406\u5458");
-      break;
-
-    case GROUP_TIP_TYPE.MEMBER_CANCELED_ADMIN:
-      tip = "".concat(payload.operatorID, "\u5C06 ").concat(userName, "\u53D6\u6D88\u4F5C\u4E3A\u7BA1\u7406\u5458");
-      break;
-
-    case GROUP_TIP_TYPE.GROUP_INFO_MODIFIED:
-      tip = '群资料修改';
-      break;
-
-    case GROUP_TIP_TYPE.MEMBER_INFO_MODIFIED:var _iterator = _createForOfIteratorHelper(
-      payload.memberList),_step;try {for (_iterator.s(); !(_step = _iterator.n()).done;) {var member = _step.value;
-          if (member.muteTime > 0) {
-            tip = "\u7FA4\u6210\u5458\uFF1A".concat(member.userID, "\u88AB\u7981\u8A00").concat(member.muteTime, "\u79D2");
-          } else {
-            tip = "\u7FA4\u6210\u5458\uFF1A".concat(member.userID, "\u88AB\u53D6\u6D88\u7981\u8A00");
-          }
-        }} catch (err) {_iterator.e(err);} finally {_iterator.f();}
-
-      break;
-
-    case 256:
-      user = message.nick || message.from;
-
-      if (payload.text === '无应答') {
-        user = payload.userIDList.join(',');
-      }
-
-      tip = payload.text === '结束群聊' ? '结束群聊' : "\"".concat(user, "\" ").concat(payload.text);
-      break;}
-
-
-  return [{
-    name: 'groupTip',
-    text: tip }];
-
-} // 解析图片消息
 
 function parseImage(message) {
   var renderDom = [{
     name: 'image',
     // 这里默认渲染的是 1080P 的图片
-    src: message.payload.imageInfoArray[0].url }];
-
+    src: message.payload.imageInfoArray[0].url
+  }];
   return renderDom;
 } // 解析视频消息
 
 function parseVideo(message) {
   var renderDom = {
     name: 'video',
-    src: message.payload.videoUrl };
-
+    src: message.payload.videoUrl
+  };
   return renderDom;
 } // 解析语音消息
 
@@ -393,8 +281,8 @@ function parseAudio(message) {
   var renderDom = {
     name: 'audio',
     src: message.payload.url,
-    second: message.payload.second === 0 ? 1 : message.payload.second };
-
+    second: message.payload.second === 0 ? 1 : message.payload.second
+  };
   return renderDom;
 }
 

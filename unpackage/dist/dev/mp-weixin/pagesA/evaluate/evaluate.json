@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "评价",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "comheader": "/components/comheader/comheader",
+    "uni-file-picker": "/uni_modules/uni-file-picker/components/uni-file-picker/uni-file-picker",
+    "tui-rate": "/pagesA/components/tui-rate/tui-rate"
+  }
+}

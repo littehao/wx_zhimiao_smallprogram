@@ -16,12 +16,13 @@
 						placeholderStyle="color: #86909C;font-size: 14px;" 
 						clearable 
 						v-model="searchValue"
+						@confirm="searchFn"
 						@focus="searchFocus" 
 						@blur="searchBlur" 
 						>
 					</tui-input>
 				</view>
-				<view class="flex align-center justify-center bgF2F3F5 rounded-right border-left" style="width: 46px;height: 36px;">
+				<view class="flex align-center justify-center bgF2F3F5 rounded-right border-left" style="width: 46px;height: 36px;" @click="searchFn">
 					<tui-icon size="22" color="#4E5969" name="search"></tui-icon>
 				</view>
 			</view>
@@ -36,34 +37,44 @@
 				<template v-if="currentTab == 0">
 					<mescroll-uni ref="mescrollRef"  :fixed="false" @init="mescrollInit" @down="downCallback" @up="upCallback"
 						:down="downOption" :up="upOption" @scroll="scrollFn">
-						<view class="px-32 py-2">
-							<block  v-for="item in 6" :key="item">
-							  <indexCard></indexCard>
+						<view class="px-32 py-2" v-if="demandList.length > 0">
+							<block  v-for="item in demandList" :key="item.id">
+							  <indexCard :item="item"></indexCard>
 							</block>
 						</view>
+						<template v-else>
+							<tui-no-data :fixed="false" :imgUrl="`https://zm.zgzhm.com/mini/img/null_nodata.png`" :marginBottom="0" :imgWidth="300" :imgHeight="300">
+								<text class="fs-28">抱歉，没有搜到相关需求</text>
+							</tui-no-data>
+						</template>
 					</mescroll-uni>
 				</template>
 				<template v-if="currentTab == 1">
 					<mescroll-uni ref="mescrollRef"  :fixed="false" @init="mescrollInit" @down="downCallback" @up="upCallback"
 						:down="downOption" :up="upOption" @scroll="scrollFn">
-						<view class="px-32 bgffff">
+						<view class="px-32 bgffff" v-if="focusList.length">
 							<block  v-for="item in focusList" :key="item.id">
-							  <view class="flex py-3">
+							  <view class="flex py-3" @click="navToUserInfo(item)">
 							  	<view class="position-relative mr-2" style="width:40px;height:40px;">
-							  	    <image class="rounded-circle" src="/static/images/avatar.png" mode="aspectFill"  style="width:40px;height:40px;"></image>
-							  	    <image class="position-absolute right-0 bottom-0" src="/static/images/level.png" mode="widthFix" style="width: 20px;height: 20px;"></image>
+							  		<image class="rounded-circle bgF2F3F5 flex" :src="item.wxHeadPortrait" mode="aspectFill"  style="width:40px;height:40px;"></image>
+							  		<image class="position-absolute right-0 bottom-0" src="/static/images/level.png" mode="widthFix" style="width: 20px;height: 20px;"></image>
 							  	</view>
 								<view class="flex flex-column flex-1">
 									<text class="mb-1 ft1D2129 fs-28">{{item.name}}</text>
 									<view class="flex align-center">
-										<text class="fs-24 ft4E5969">诚信值: LV23</text>
-										<text class="fs-24 ft4E5969">技能量: 23</text>
+										<text class="fs-24 ft4E5969 mr-1">诚信值: {{item.integrityValue}}</text>
+										<text class="fs-24 ft4E5969">等级: {{item.skillValue}}</text>
 									</view>
 								</view>
-								<view class="fs-24 ftffff flex align-center justify-center rounded" :class="item.focus?'bgFCB6A4':'bgF85241'" style="width: 60px;height: 24px;" @click="focusItemFn(item)">{{item.focus?'已关注':'关注'}}</view>
+								<view class="fs-24 ftffff flex align-center justify-center rounded" :class="item.concernedOrNot == 1?'bgFCB6A4':'bgF85241'" style="width: 60px;height: 24px;" @click.stop="focusItemFn(item)">{{item.concernedOrNot == 1?'已关注':'关注'}}</view>
 							  </view>
 							</block>
 						</view>
+						<template v-else>
+							<tui-no-data :fixed="false" :imgUrl="`https://zm.zgzhm.com/mini/img/null_nodata.png`" :marginBottom="0" :imgWidth="300" :imgHeight="300">
+								<text class="fs-28">抱歉，没有搜到相关用户</text>
+							</tui-no-data>
+						</template>
 					</mescroll-uni>
 				</template>
 			</view>
@@ -76,7 +87,7 @@
 				</view>
 				<view class="flex flex-wrap  mx-32">
 					<block v-for="item in  historyList"  :key="item">
-						<text class="fs-28 ft4E5969 p-1 mr-2 bgF2F3F5 mb-2 rounded">{{item}}</text>	
+						<text class="fs-28 ft4E5969 p-1 mr-2 bgF2F3F5 mb-2 rounded" @click="checkFn(item)">{{item}}</text>	
 					</block>
 				</view>
 			</view>	
@@ -101,10 +112,10 @@
 		<tui-modal :show="focusModal" custom padding="0">
 			<view class="flex flex-column pt-5">
 				<view class="position-relative mr-2 mx-auto mb-2" style="width:40px;height:40px;">
-				    <image class="rounded-circle" src="/static/images/avatar.png" mode="aspectFill"  style="width:40px;height:40px;"></image>
+				    <image class="rounded-circle" :src="`https://zm.zgzhm.com/mini/img/avatar.png`" mode="aspectFill"  style="width:40px;height:40px;"></image>
 				    <image class="position-absolute right-0 bottom-0" src="/static/images/level.png" mode="widthFix" style="width: 20px;height: 20px;"></image>
 				</view>
-				<view class="flex align-center justify-center fs-32 ft1D2129 pb-3">你将不再关注<text class="f-w-b">朱成慧</text></view>
+				<view class="flex align-center justify-center fs-32 ft1D2129 pb-3">你将不再关注<text class="f-w-b">{{focusInfo.attentionUserName}}</text></view>
 				<view class="flex align-center border-top" style="height: 56px;">
 					<view class="flex align-center justify-center ft000000 fs-28 flex-1 h-100" @click="focusModal = false">取消</view>
 					<view class="flex align-center justify-center ftF85241 fs-28 border-left flex-1 h-100"  @click="comfirmFocusFn">取消关注</view>
@@ -115,7 +126,10 @@
 </template>
 
 <script>
+	import { mapActions,mapGetters } from 'vuex'
+	import tuiInput from '@/pagesA/components/tui-input/tui-input.vue'
 	export default {
+		components:{tuiInput},
 		data() {
 			return {
 				searchValue:'',
@@ -139,7 +153,6 @@
 						use: false
 					},
 					textLoading: '加载中...',
-					textNoMore: '暂无更多商品',
 					toTop: {
 						safearea: true,
 						bottom: "15%"
@@ -148,26 +161,139 @@
 				downOption: {
 					auto: false
 				},
-				historyList:['搜索历史','灯具安装','标签字数过多展示换行','办公电脑出租',],
+				pageSize:15,
+				demandList:[],//搜索需求列表
 				clearHistoryModal:false,
 				focusModal:false,
 				focusInfo:'',
-				focusList:[
-					{id:1,focus:false,name:'韩磊1'},
-					{id:2,focus:false,name:'韩磊2'},
-					{id:3,focus:true,name:'韩磊3'},
-					{id:4,focus:false,name:'韩磊4'},
-					{id:5,focus:true,name:'韩磊5'},
-					{id:6,focus:false,name:'韩磊6'},
-					{id:7,focus:false,name:'韩磊6'},
-					{id:8,focus:false,name:'韩磊6'},
-					{id:9,focus:false,name:'韩磊6'},
-					{id:10,focus:false,name:'韩磊6'},
-					{id:11,focus:false,name:'韩磊6'},
-				]
+				focusList:[],//搜索用户列表
+				historyList:[],//搜索历史
 			}
 		},
+		computed:{
+			...mapGetters(['currentLocation'])
+		},
+		created() {
+			this.getSsearchHistoryListFn()
+		},
 		methods: {
+			...mapActions(['selDemandSearchList','selUserSearchList','getSsearchHistoryList','delSsearchHistory','getFollow','cancelAttention']),
+			async selDemandSearchListFn(page){ //  搜索需求
+				try{
+					let data = {
+						content:this.searchValue,
+						pageNum:page,
+						pageSize:this.pageSize,
+						sortOrder:1,
+						xAxis:this.currentLocation.lat,
+						yAxis:this.currentLocation.lng
+					}
+					let res = await this.selDemandSearchList(data)
+					let list = res.data
+					const hasNext = list.length > 14
+					if(page == 1){
+						this.demandList = list
+					} else {
+						this.demandList = this.demandList.concat(list)
+					}
+					this.getSsearchHistoryListFn()
+					this.$nextTick(() => {
+						this.mescroll.endSuccess(list.length, hasNext);
+					})
+				}catch(e){
+					console.log(e)
+					this.$nextTick(() => {
+						this.mescroll.endSuccess(this.demandList.length, false);
+					})
+					//TODO handle the exception
+				}
+			},
+			async selUserSearchListFn(page){ // 搜索用户
+				try{
+					let data = {
+						content:this.searchValue,
+						pageNum:page,
+						pageSize:this.pageSize,
+					}
+					let res = await this.selUserSearchList(data)
+					let list = res.data
+					const hasNext = list.length > 14
+					if(page == 1){
+						this.focusList = list
+					} else {
+						this.focusList = this.focusList.concat(list)
+					}
+					this.getSsearchHistoryListFn()
+					this.mescroll.endSuccess(list.length, hasNext);
+				}catch(e){
+					this.mescroll.endSuccess(this.focusList.length, false);
+					//TODO handle the exception
+				}
+			},
+			async getSsearchHistoryListFn(){ // 搜索历史
+				try{
+					let res = await this.getSsearchHistoryList()
+					this.historyList = res.data
+				}catch(e){
+					//TODO handle the exception
+				}
+			},
+			async delSsearchHistoryFn(){ // 清空历史
+				try{
+					let res = await this.delSsearchHistory()
+					this.tui.toast(res.msg)
+					this.clearHistoryModal = false
+					this.getSsearchHistoryListFn()
+				}catch(e){
+					this.tui.toast(e.data.msg)
+					//TODO handle the exception
+				}
+			},
+			async followFn(){  // 关注
+				try{
+					let data = {
+						attentionUserId:this.focusInfo.id,
+						attentionUserName:this.focusInfo.name
+					}
+					let res = await this.getFollow(data)
+					this.mescroll.resetUpScroll();
+					this.tui.toast(res.msg)
+				}catch(e){
+					this.tui.toast(e.msg)
+					//TODO handle the exception
+				}
+			},
+			async cancelAttentionFn(){ // 取消关注
+				try{
+					let data = {
+						attentionUserId:this.focusInfo.id,
+						attentionUserName:this.focusInfo.name
+					}
+					let res = await this.cancelAttention(data)
+					this.focusModal  =  false
+					this.mescroll.resetUpScroll();
+					this.tui.toast(res.msg)
+				}catch(e){
+					this.tui.toast(e.msg)
+					//TODO handle the exception
+				}
+			},
+			searchFn(){
+				if(!this.searchValue){
+					this.tui.toast('请输入搜索内容')
+					return
+				}
+				this.mescroll && this.mescroll.setPageNum(1)
+				if(this.currentTab == 1){
+					this.selUserSearchListFn(1)
+				} else {
+					this.selDemandSearchListFn(1)
+				}
+			},
+			checkFn(text){
+				this.searchValue = text
+				this.searchFn()
+			},
 			mescrollInit(mescroll) {
 				this.mescroll = mescroll;
 			},
@@ -175,24 +301,29 @@
 				this.scrollTop = mescroll.scrollTop
 			},
 			downCallback() {
-				setTimeout(() => {
-					this.mescroll.resetUpScroll();
-				}, 600);
+				this.mescroll.resetUpScroll();
 			},
 			upCallback(mescroll) { //上拉加载
-				setTimeout(() => {
-					this.mescroll.endSuccess([], false);
-				}, 600);
+				if(this.currentTab == 1){
+					this.selUserSearchListFn(mescroll.num)
+				} else {
+					this.selDemandSearchListFn(mescroll.num)
+				}
 			},
 			comfirmFn(){  // 确认清空
-				this.clearHistoryModal = false
+				this.delSsearchHistoryFn()
 			},
 			focusItemFn(item){ // 当前取消用户信息
 				this.focusInfo  = item
-				this.focusModal  =  true
+				if(item.concernedOrNot == 1){
+					this.focusModal  =  true
+				} else {
+					this.followFn()
+				}
+				
 			},
-			comfirmFocusFn(){
-				this.focusModal  =  false
+			comfirmFocusFn(){ // 取消关注
+				this.cancelAttentionFn()
 			},
 			searchBlur(){ // 失去焦点状态
 				this.isBlur = true
@@ -202,6 +333,17 @@
 			},
 			change(e){
 				this.currentTab = e.index
+				this.mescroll && this.mescroll.setPageNum(1)
+				if(this.currentTab == 1){
+					this.selUserSearchListFn(1)
+				} else {
+					this.selDemandSearchListFn(1)
+				}
+			},
+			navToUserInfo(item){
+				uni.navigateTo({
+					url:'/pagesA/user/user?userId='+item.id
+				})
 			}
 		}
 	}

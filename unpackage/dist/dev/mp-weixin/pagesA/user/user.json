@@ -3,7 +3,9 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "comheader": "/components/comheader/comheader",
-    "tui-tabs": "/node-modules/thorui-uni/lib/thorui/tui-tabs/tui-tabs",
-    "index-card": "/components/indexCard/indexCard"
+    "tui-tabs": "/components/tui-tabs/tui-tabs",
+    "tui-no-data": "/components/tui-no-data/tui-no-data",
+    "login": "/components/login/login",
+    "demand-list-tep": "/pagesA/user/demandList"
   }
 }

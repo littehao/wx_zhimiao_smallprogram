@@ -1,0 +1,1 @@
+<view class="TUI-faceMessage"><view class="{{['text-message '+(isMine?'my-text':'')]}}"><block wx:if="{{emojiText}}"><image class="face-message" style="width:70rpx;" src="{{renderDom.src}}" mode="widthFix"></image></block><block wx:else><text>.</text></block></view></view>

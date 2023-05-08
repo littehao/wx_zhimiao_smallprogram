@@ -1,10 +1,10 @@
 {
   "component": true,
   "usingComponents": {
-    "tip-message": "/pagesB/components/tip-message/index",
     "text-message": "/pagesB/components/text-message/index",
     "card-message": "/pagesB/components/card-message/index",
     "system-message": "/pagesB/components/system-message/index",
-    "orderapply-message": "/pagesB/components/orderapply-message/index"
+    "orderapply-message": "/pagesB/components/orderapply-message/index",
+    "face-message": "/pagesB/components/face-message/index"
   }
 }

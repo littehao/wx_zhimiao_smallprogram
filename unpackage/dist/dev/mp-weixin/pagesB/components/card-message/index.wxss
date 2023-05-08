@@ -25,7 +25,8 @@
 /* 透明度 */
 /* 文章场景相关 */
 .card-message.data-v-2c1b1123 {
-  max-width: 64vw;
+  max-width: 68vw;
+  min-width: 50vw;
   border-radius: 2px 10px 10px 10px;
 }
 .my-text.data-v-2c1b1123 {

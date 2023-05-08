@@ -1,90 +1,66 @@
 <template>
-	<view class="select-city-page">
+	<view class="select-city-page bgF7F8FA h-100vh flex flex-column">
 		<comheader title="选择城市"></comheader>	
-		<view class="mx-32">
-			<tui-index-list @click="itemClick" 
-			color="#000" 
-			padding="0" 
-			size="32rpx" 
-			height="100rpx" 
-			activeColor="#F85241"
-			activeKeyColor="#F85241"
-			activeKeyBackground="transparent"
-			:list-data="cityList" 
-			background="#fff" 
-			:isblock="false" 
-			:bottomLine="false">
-				<template slot-scope="{ entity, index, subi }" slot="item">
-					<view class="fs-28 ft1D2129 p-1 bgF2F3F5 mr-2 mb-2">{{entity.name}}</view>
-				</template>
-			</tui-index-list>
+		<view class="bgffff fs-28 flex align-center px-2" style="height: 50px;">
+			<text class="ft86909C">当前所在城市：</text>
+			<text @click="curCity">{{currentLocation.cityName}}</text>
+		</view>
+		<view class="city-scroll position-relative flex-1">
+			<uni-indexed-list :options="cityList" :showSelect="false" @click="itemClick"></uni-indexed-list>
 		</view>	
+		<view :style="{height: getSafeAreaBottom+'px'}" class="bgffff position-relative" style="z-index: 99;"></view>
 	</view>
 </template>
 
 <script>
+	import { mapGetters } from 'vuex'
+	import { city } from './cityList.js'
+	import uniIndexedList from '@/pagesA/components/uni-indexed-list/components/uni-indexed-list/uni-indexed-list.vue'
 	export default {
+		components:{uniIndexedList},
 		data() {
 			return {
-				cityList:[
-					{
-						"letter": "A",
-						"title":"A省",
-						"data": [{
-								"id": 1,
-								"name": "延边朝鲜族自治州",
-							},
-							{
-								"id": 2,
-								"name": "枣庄市"
-							},
-							{
-								"id": 2,
-								"name": "株洲市"
-							},
-							{
-								"id": 2,
-								"name": "九江市"
-							},
-							{
-								"id": 2,
-								"name": "湘潭市"
-							}
-						]
-					},
-					{
-						"letter": "B",
-						"title":"B省",
-						"data": [{
-								"id": 1,
-								"name": "延边朝鲜族自治州",
-							},
-							{
-								"id": 2,
-								"name": "枣庄市3"
-							},
-							{
-								"id": 2,
-								"name": "枣庄市4"
-							},
-							{
-								"id": 2,
-								"name": "枣庄市5"
-							},
-							{
-								"id": 2,
-								"name": "枣庄市6"
-							}
-						]
-					}
-				
-				]
+				cityList:[]
 			}
 		},
+		computed:{
+			...mapGetters(['getAxis','getSafeAreaBottom','currentLocation']),
+		},
+		created() {
+			city.sort((a,b)=>{
+				if(a.letter < b.letter){
+					return -1
+				} else if(a.letter == b.letter) {
+					return 0
+				} else {
+					return 1
+				}
+			})
+			this.cityList = city
+		},
 		methods: {
+			curCity(){
+				let list = []
+				this.cityList.forEach(item => {
+					list = list.concat(item.data)
+				})
+				const cur = list.find(obj => obj.title == this.currentLocation.cityName)
+				uni.$emit('updateData',{
+					item:{
+						location:{
+							lat:cur.center[1],
+							lng:cur.center[0],
+						},
+						name:cur.title
+					},
+					type:'home'
+				})
+				uni.navigateBack({
+					delta: 1
+				})
+			},
 			itemClick(e){
-				// console.log(e)
-				uni.$emit('updateData',e)
+				uni.$emit('updateData',{...e,type:'home'})
 				uni.navigateBack({
 					delta: 1
 				})
@@ -93,6 +69,9 @@
 	}
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.city-scroll{
+	height: calc(100vh - 44px - 50px - var(--status-bar-height));
+	overflow-y: auto;
+}
 </style>

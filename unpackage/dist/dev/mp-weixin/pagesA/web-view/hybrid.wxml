@@ -1,0 +1,1 @@
+<view class="agreement-page bgF7F8FA h-100vh flex flex-column"><comheader vue-id="12f855fd-1" title="{{title}}" bind:__l="__l"></comheader><web-view src="{{'/static/hybrid/html/'+url+'.html'}}"></web-view></view>

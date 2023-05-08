@@ -109,6 +109,113 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*每个页面公共css */
 
  /* scroll-view */
@@ -133,6 +240,9 @@ input:focus{background:transparent}
 .h-100{ height: 100%;
 }
 .h-100vh{
+	height: 100vh;
+}
+.mh-100vh{
 	height: 100vh;
 }
 .row {
@@ -556,26 +666,26 @@ input:focus{background:transparent}
 .bg-white { background-color: #ffffff;}
 .bg-transparent { background-color: transparent;}
  /* 边框 */
-.border { border-width: 1px;border-style: solid;border-color: #E5E6E8;}
+.border { border-width: 1px;border-style: solid;border-color: #f9f8f8;}
 .border-top {
   border-top-width: 1rpx;
   border-top-style: solid;
-  border-top-color: #E5E6E8;
+  border-top-color: #f9f8f8;
 }
 .border-right {
   border-right-width: 1rpx;
   border-right-style: solid;
-  border-right-color: #E5E6E8;
+  border-right-color: #f9f8f8;
 }
 .border-bottom {
   border-bottom-width: 1rpx;
   border-bottom-style: solid;
-  border-bottom-color: #E5E6E8;
+  border-bottom-color: #eee;
 }
 .border-left {
   border-left-width: 1rpx;
   border-left-style: solid;
-  border-left-color: #E5E6E8;
+  border-left-color: #f9f8f8;
 }
 .border-0 { border-width: 0!important;}
 .border-top-0 { border-top-width: 0!important;}
@@ -693,6 +803,9 @@ input:focus{background:transparent}
 	z-index: 100;
 }
  /* */
+view,text{
+	font-family: PingFang SC-Medium, PingFang SC;
+}
 .border-box{
     box-sizing: border-box;
 }
@@ -700,7 +813,25 @@ input:focus{background:transparent}
     font-size: 14px;
     font-family: PingFang SC-Regular, PingFang SC;
     font-weight: 400;
-    color: #86909C;
+    color: #999;
+}
+.agreement-scroll{
+	line-height: 50rpx;
+	font-size:28rpx;
+	color:#555;
+}
+.topcircle{
+	width: 80rpx;
+	height: 40rpx;
+	border-radius: 100px 100px 0 0;
+	line-height: 50px;
+	position: absolute;
+	left: 50%;
+	top:-22rpx;
+	margin-left: -42rpx;
+	background-color: #fff;
+	border:1px solid #f9f8f8;
+	border-bottom: 0;
 }
 .family{
     font-family: PingFang SC-Medium, PingFang SC;
@@ -730,8 +861,21 @@ input:focus{background:transparent}
 .bgF7F8FA{
     background-color: #F7F8FA;
 }
+.bgheigth{
+	background: linear-gradient(90deg, #e63728 0%, #f7811b 100%);
+}
 .bglinear{
-    background: linear-gradient(180deg, #F85241 0%,#F85241 30%, #F29F63 100%);
+    /* background: linear-gradient(180deg, #F85241 0%,#F85241 30%, #F29F63 100%); */
+		background-image: url('https://zm.zgzhm.com/mini/img/minbg.jpg');
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		background-position: center top;
+}
+.bgmylinear{
+		background-image: url('https://zm.zgzhm.com/mini/img/mybg.jpg');
+		background-repeat: no-repeat;
+		background-size: 100%;
+		background-position: center top;
 }
 .bgffff{
     background-color: #fff;
@@ -740,7 +884,14 @@ input:focus{background:transparent}
     background-color: #F2F3F5;
 }
 .bgF85241{
-	background-color: #F85241;
+	/* background-color: #F85241; */
+	background: linear-gradient(0deg, #e63728 0%, #f7811b 100%);
+}
+.bge63728{
+	background-color: #e63728;
+}
+.bgf7811b{
+	background-color: #f7811b;
 }
 .bgF53F3F{
 	background-color: #F53F3F;
@@ -757,10 +908,14 @@ input:focus{background:transparent}
 .bg00B42A{
 	background-color: #00B42A;
 }
+.bgfff3{
+	background-color: rgba(255, 255, 255, 0.3);
+}
  /*字体颜色*/
 .ft000000{
 	color: #000000;
 }
+.ftffffff,
 .ftffff{
     color:#fff;
 }
@@ -787,6 +942,12 @@ input:focus{background:transparent}
 }
 .ftFCB6A4{
 	color: #FCB6A4;
+}
+.ft999999{
+	color:#999;
+}
+.ftf7811b{
+	color: #f7811b;
 }
  /*字体大小*/
 .fs-16{

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "tui-picture-cropper": "/pagesA/components/tui-picture-cropper/tui-picture-cropper"
+  }
+}

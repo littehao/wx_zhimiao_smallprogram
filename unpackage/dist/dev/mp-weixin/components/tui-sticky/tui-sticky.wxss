@@ -1,0 +1,8 @@
+
+.tui-sticky-fixed.data-v-b08fd1f8 {
+	width: 100%;
+	position: fixed;
+	left: 0;
+	z-index: 888;
+}
+

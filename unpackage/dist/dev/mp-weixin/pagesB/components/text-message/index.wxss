@@ -64,4 +64,28 @@
   width: 20px;
   height: 20px;
 }
+.tui-icon-loading.data-v-d45d2400 {
+  -webkit-animation: rotate-data-v-d45d2400 1s linear infinite;
+          animation: rotate-data-v-d45d2400 1s linear infinite;
+}
+@-webkit-keyframes rotate-data-v-d45d2400 {
+from {
+    -webkit-transform: rotatez(0deg);
+            transform: rotatez(0deg);
+}
+to {
+    -webkit-transform: rotatez(360deg);
+            transform: rotatez(360deg);
+}
+}
+@keyframes rotate-data-v-d45d2400 {
+from {
+    -webkit-transform: rotatez(0deg);
+            transform: rotatez(0deg);
+}
+to {
+    -webkit-transform: rotatez(360deg);
+            transform: rotatez(360deg);
+}
+}
 

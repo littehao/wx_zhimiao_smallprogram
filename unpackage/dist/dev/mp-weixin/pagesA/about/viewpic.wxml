@@ -1,0 +1,1 @@
+<view class="bgF7F8FA h-100vh flex flex-column"><comheader vue-id="35d7dbb2-1" title="{{title}}" bind:__l="__l"></comheader><block wx:if="{{content}}"><view class="fs-32 ft86909C text-center py-5">{{content}}</view></block><block wx:if="{{url}}"><image class="flex" style="width:100%;" src="{{url}}" mode="widthFix"></image></block></view>

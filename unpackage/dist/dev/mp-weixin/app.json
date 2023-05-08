@@ -1,84 +1,71 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/my/my",
-        "pages/msg/msg",
-        "pages/release/release",
-        "pages/demand-details/demand-details",
-        "pages/login/login",
-        "pages/anti-counterfeiting/anti-counterfeiting"
-    ],
-    "subPackages": [
-        {
-            "root": "pagesA",
-            "pages": [
-                "select-city/select-city",
-                "location/location",
-                "search/search",
-                "focus-list/focus-list",
-                "fans-list/fans-list",
-                "mydemand/mydemand",
-                "myaccept/myaccept",
-                "agreement/agreement",
-                "myinfo/myinfo",
-                "Introduction/Introduction",
-                "mylabel/mylabel",
-                "user/user"
-            ]
-        },
-        {
-            "root": "pagesB",
-            "pages": [
-                "chat/chat",
-                "notice/notice"
-            ]
-        }
-    ],
-    "window": {
-        "navigationStyle": "custom",
-        "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "uni-app",
-        "navigationBarBackgroundColor": "#F8F8F8",
-        "backgroundColor": "#F8F8F8"
+  "pages": [
+    "pages/main"
+  ],
+  "subPackages": [
+    {
+      "root": "pagesA",
+      "pages": [
+        "cash/addbank",
+        "cash/wallet",
+        "cash/realname",
+        "cash/commissiondetails",
+        "demand-details/demand-details",
+        "anti-counterfeiting/anti-counterfeiting",
+        "select-city/select-city",
+        "location/location",
+        "search/search",
+        "search-suggest/search-suggest",
+        "focus-list/focus-list",
+        "fans-list/fans-list",
+        "mydemand/mydemand",
+        "myaccept/myaccept",
+        "agreement/agreement",
+        "myinfo/myinfo",
+        "Introduction/Introduction",
+        "mylabel/mylabel",
+        "user/user",
+        "cropper-default/cropper-default",
+        "web-view/web-view",
+        "web-view/hybrid",
+        "completed/completed",
+        "evaluate/evaluate",
+        "evaluate/evaluate-details",
+        "evaluate/list",
+        "login/login",
+        "intro/intro",
+        "service/service",
+        "setup/setup",
+        "feedback/feedback",
+        "about/about",
+        "about/flair",
+        "about/viewpic"
+      ]
     },
-    "tabBar": {
-        "color": "#6e6d6b",
-        "selectedColor": "#e64340",
-        "borderStyle": "black",
-        "backgroundColor": "#fff",
-        "fontSize": "12px",
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "iconPath": "/static/images/home-off.png",
-                "selectedIconPath": "/static/images/home-on.png",
-                "text": "首页"
-            },
-            {
-                "pagePath": "pages/release/release",
-                "iconPath": "/static/images/release-off.png",
-                "selectedIconPath": "/static/images/release-on.png",
-                "text": "发布需求"
-            },
-            {
-                "pagePath": "pages/msg/msg",
-                "iconPath": "/static/images/msg-off.png",
-                "selectedIconPath": "/static/images/msg-on.png",
-                "text": "消息"
-            },
-            {
-                "pagePath": "pages/my/my",
-                "iconPath": "/static/images/my-off.png",
-                "selectedIconPath": "/static/images/my-on.png",
-                "text": "我的"
-            }
-        ]
-    },
-    "permission": {
-        "scope.userLocation": {
-            "desc": "你的位置信息将用于定位效果展示"
-        }
-    },
-    "usingComponents": {},
-    "sitemapLocation": "sitemap.json"
+    {
+      "root": "pagesB",
+      "pages": [
+        "chat/chat",
+        "notice/notice",
+        "webview/webview"
+      ]
+    }
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "职苗",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取当前需求发布地址"
+    }
+  },
+  "usingComponents": {}
 }

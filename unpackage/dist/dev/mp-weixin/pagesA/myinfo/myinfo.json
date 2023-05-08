@@ -3,8 +3,8 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "comheader": "/components/comheader/comheader",
-    "tui-icon": "/node-modules/thorui-uni/lib/thorui/tui-icon/tui-icon",
-    "tui-datetime": "/node-modules/thorui-uni/lib/thorui/tui-datetime/tui-datetime",
-    "tui-picker": "/node-modules/thorui-uni/lib/thorui/tui-picker/tui-picker"
+    "tui-icon": "/components/tui-icon/tui-icon",
+    "tui-datetime": "/pagesA/components/tui-datetime/tui-datetime",
+    "tui-picker": "/pagesA/components/tui-picker/tui-picker"
   }
 }

@@ -2,8 +2,8 @@
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "tui-list-cell": "/node-modules/thorui-uni/lib/thorui/tui-list-cell/tui-list-cell",
-    "tui-loadmore": "/node-modules/thorui-uni/lib/thorui/tui-loadmore/tui-loadmore",
-    "tui-form-button": "/node-modules/thorui-uni/lib/thorui/tui-form-button/tui-form-button"
+    "tui-form-button": "/pagesA/components/tui-form-button/tui-form-button",
+    "tui-list-cell": "/pagesA/components/tui-list-cell/tui-list-cell",
+    "tui-loadmore": "/pagesA/components/tui-loadmore/tui-loadmore"
   }
 }

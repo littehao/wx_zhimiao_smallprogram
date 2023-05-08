@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "comheader": "/components/comheader/comheader",
+    "tui-icon": "/components/tui-icon/tui-icon",
+    "tui-divider": "/pagesA/components/tui-divider/tui-divider",
+    "tui-list-cell": "/pagesA/components/tui-list-cell/tui-list-cell",
+    "tui-loadmore": "/pagesA/components/tui-loadmore/tui-loadmore"
+  }
+}

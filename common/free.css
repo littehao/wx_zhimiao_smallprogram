@@ -20,6 +20,9 @@ input:focus{background:transparent}
 .h-100vh{
 	height: 100vh;
 }
+.mh-100vh{
+	height: 100vh;
+}
 
 .row {
   margin-right: -20rpx;
@@ -349,26 +352,26 @@ input:focus{background:transparent}
 .bg-white { background-color: #ffffff;}
 .bg-transparent { background-color: transparent;}
 /* 边框 */
-.border { border-width: 1px;border-style: solid;border-color: #E5E6E8;}
+.border { border-width: 1px;border-style: solid;border-color: #f9f8f8;}
 .border-top {
   border-top-width: 1rpx;
   border-top-style: solid;
-  border-top-color: #E5E6E8;
+  border-top-color: #f9f8f8;
 }
 .border-right {
   border-right-width: 1rpx;
   border-right-style: solid;
-  border-right-color: #E5E6E8;
+  border-right-color: #f9f8f8;
 }
 .border-bottom {
   border-bottom-width: 1rpx;
   border-bottom-style: solid;
-  border-bottom-color: #E5E6E8;
+  border-bottom-color: #eee;
 }
 .border-left {
   border-left-width: 1rpx;
   border-left-style: solid;
-  border-left-color: #E5E6E8;
+  border-left-color: #f9f8f8;
 }
 .border-0 { border-width: 0!important;}
 .border-top-0 { border-top-width: 0!important;}

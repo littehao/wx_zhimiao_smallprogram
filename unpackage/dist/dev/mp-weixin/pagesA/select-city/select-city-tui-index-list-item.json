@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "select-city-tui-index-list-item": "/pagesA/select-city/select-city-tui-index-list-item",
-    "comheader": "/components/comheader/comheader",
-    "tui-index-list": "/node-modules/thorui-uni/lib/thorui/tui-index-list/tui-index-list"
-  }
-}

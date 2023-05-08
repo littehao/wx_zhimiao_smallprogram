@@ -1,10 +1,12 @@
 {
-  "navigationBarTitleText": "",
-  "enablePullDownRefresh": false,
+  "component": true,
   "usingComponents": {
     "comheader": "/components/comheader/comheader",
-    "tui-tabs": "/node-modules/thorui-uni/lib/thorui/tui-tabs/tui-tabs",
+    "tui-tabs": "/components/tui-tabs/tui-tabs",
     "mescroll-uni": "/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-uni",
-    "msg": "/components/msg/msg"
+    "msg": "/components/msg/msg",
+    "tui-no-data": "/components/tui-no-data/tui-no-data",
+    "tui-modal": "/components/tui-modal/tui-modal",
+    "login": "/components/login/login"
   }
 }

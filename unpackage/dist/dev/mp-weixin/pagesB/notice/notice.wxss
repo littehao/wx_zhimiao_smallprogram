@@ -27,4 +27,7 @@
 .msg-scroll {
   height: calc(100vh - 44px - 25px);
 }
+.msg-scroll .message-list-container {
+  height: 100%;
+}
 

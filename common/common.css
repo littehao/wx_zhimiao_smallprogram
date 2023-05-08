@@ -1,3 +1,6 @@
+view,text{
+	font-family: PingFang SC-Medium, PingFang SC;
+}
 .border-box{
     box-sizing: border-box;
 }
@@ -5,7 +8,25 @@
     font-size: 14px;
     font-family: PingFang SC-Regular, PingFang SC;
     font-weight: 400;
-    color: #86909C;
+    color: #999;
+}
+.agreement-scroll{
+	line-height: 50rpx;
+	font-size:28rpx;
+	color:#555;
+}
+.topcircle{
+	width: 80rpx;
+	height: 40rpx;
+	border-radius: 100px 100px 0 0;
+	line-height: 50px;
+	position: absolute;
+	left: 50%;
+	top:-22rpx;
+	margin-left: -42rpx;
+	background-color: #fff;
+	border:1px solid #f9f8f8;
+	border-bottom: 0;
 }
 .family{
     font-family: PingFang SC-Medium, PingFang SC;
@@ -35,8 +56,21 @@
 .bgF7F8FA{
     background-color: #F7F8FA;
 }
+.bgheigth{
+	background: linear-gradient(90deg, #e63728 0%, #f7811b 100%);
+}
 .bglinear{
-    background: linear-gradient(180deg, #F85241 0%,#F85241 30%, #F29F63 100%);
+    /* background: linear-gradient(180deg, #F85241 0%,#F85241 30%, #F29F63 100%); */
+		background-image: url('https://zm.zgzhm.com/mini/img/minbg.jpg');
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		background-position: center top;
+}
+.bgmylinear{
+		background-image: url('https://zm.zgzhm.com/mini/img/mybg.jpg');
+		background-repeat: no-repeat;
+		background-size: 100%;
+		background-position: center top;
 }
 .bgffff{
     background-color: #fff;
@@ -45,7 +79,14 @@
     background-color: #F2F3F5;
 }
 .bgF85241{
-	background-color: #F85241;
+	/* background-color: #F85241; */
+	background: linear-gradient(0deg, #e63728 0%, #f7811b 100%);
+}
+.bge63728{
+	background-color: #e63728;
+}
+.bgf7811b{
+	background-color: #f7811b;
 }
 .bgF53F3F{
 	background-color: #F53F3F;
@@ -63,12 +104,16 @@
 	background-color: #00B42A;
 }
 
+.bgfff3{
+	background-color: rgba(255, 255, 255, 0.3);
+}
 
 
 /*字体颜色*/
 .ft000000{
 	color: #000000;
 }
+.ftffffff,
 .ftffff{
     color:#fff;
 }
@@ -95,6 +140,12 @@
 }
 .ftFCB6A4{
 	color: #FCB6A4;
+}
+.ft999999{
+	color:#999;
+}
+.ftf7811b{
+	color: #f7811b;
 }
 
 

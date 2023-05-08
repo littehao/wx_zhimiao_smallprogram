@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "comheader": "/components/comheader/comheader",
+    "tui-icon": "/components/tui-icon/tui-icon",
+    "login": "/components/login/login"
+  }
+}

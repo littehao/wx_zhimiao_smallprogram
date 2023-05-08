@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tui-modal": "/components/tui-modal/tui-modal",
+    "tui-icon": "/components/tui-icon/tui-icon",
+    "login-bt": "/components/login/loginBtn"
+  }
+}

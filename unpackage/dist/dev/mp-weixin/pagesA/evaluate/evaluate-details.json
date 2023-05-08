@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "查看评价",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "comheader": "/components/comheader/comheader",
+    "tui-no-data": "/components/tui-no-data/tui-no-data",
+    "tui-rate": "/pagesA/components/tui-rate/tui-rate"
+  }
+}

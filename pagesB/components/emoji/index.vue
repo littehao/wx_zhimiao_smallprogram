@@ -1,13 +1,13 @@
 <template>
 	<view class="TUI-Emoji">
 		<view v-for="(item, index) in emojiList" :key="index" class="TUI-emoji-image">
-			<image :data-name="item.emojiName" class="emoji-image" :src="item.url" @tap="handleEnterEmoji"></image>
+			<image :data-name="item.emojiName" :data-index="index + 1" class="emoji-image" :src="item.url" @tap="handleEnterEmoji"></image>
 		</view>
 	</view>
 </template>
 
 <script>
-import { emojiName, emojiUrl, emojiMap } from '@/utils/emojiMap.js';
+import { emojiName, emojiUrl, emojiMap } from '@/pagesB/utils/emojiMap.js';
 
 export default {
 	data() {
@@ -31,6 +31,7 @@ export default {
 
 	methods: {
 		handleEnterEmoji(event) {
+			console.log(event)
 			this.$emit('enterEmoji', {
 				detail: {
 					message: event.currentTarget.dataset.name

@@ -2,8 +2,7 @@
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "select-city-tui-index-list-item": "/pagesA/select-city/select-city-tui-index-list-item",
     "comheader": "/components/comheader/comheader",
-    "tui-index-list": "/node-modules/thorui-uni/lib/thorui/tui-index-list/tui-index-list"
+    "uni-indexed-list": "/pagesA/components/uni-indexed-list/components/uni-indexed-list/uni-indexed-list"
   }
 }

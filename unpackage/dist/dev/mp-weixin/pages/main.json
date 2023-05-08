@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "index-page": "/pages/index/index",
+    "msg-page": "/pages/msg/msg",
+    "release-page": "/pages/release/release",
+    "my-page": "/pages/my/my"
+  }
+}

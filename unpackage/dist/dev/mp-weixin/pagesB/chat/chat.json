@@ -3,6 +3,7 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "comheader": "/components/comheader/comheader",
+    "tui-modal": "/components/tui-modal/tui-modal",
     "message-input": "/pagesB/components/message-input/message-input",
     "message-list": "/pagesB/components/message-list/index"
   }

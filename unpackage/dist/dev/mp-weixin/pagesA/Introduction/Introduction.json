@@ -3,6 +3,6 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "comheader": "/components/comheader/comheader",
-    "tui-textarea": "/node-modules/thorui-uni/lib/thorui/tui-textarea/tui-textarea"
+    "tui-textarea": "/pagesA/components/tui-textarea/tui-textarea"
   }
 }

@@ -1,10 +1,24 @@
 <template>
-	<view class="flex flex-wrap">
-		<text class="fs-24 ft86909C lineh44 text-center">温馨提示：在雇主回复你之前最多只能发3条消息。平台不会以官方客服身份发送不明跳转链接二维码支付及其他联系方式，，遇到问题建议在线举报，如果遇到钱财损失，建议您立即报警</text>
+	<view class="flex align-center flex-wrap justify-center my-3">
+		<tui-icon name="about-fill" size="16" color="#86909C"></tui-icon>
+		<text v-if="message.payload.data.mpsContent" class="fs-24 ft86909C lineh44 text-center px-3">{{message.payload.data.mpsContent}}</text>
+		<text v-else class="fs-24 ft86909C lineh44 text-center ml-1">{{message.payload.data.dbTitle}}</text>
 	</view>
 </template>
 
 <script>
+	export default {
+		props:{
+			message:{
+				type:Object
+			}
+		},
+		data(){
+			return {
+				
+			}
+		}
+	}
 </script>
 
 <style>

@@ -1,9 +1,10 @@
 {
-  "navigationBarTitleText": "",
-  "enablePullDownRefresh": false,
+  "component": true,
   "usingComponents": {
     "comheader": "/components/comheader/comheader",
-    "tui-icon": "/node-modules/thorui-uni/lib/thorui/tui-icon/tui-icon",
-    "tui-badge": "/node-modules/thorui-uni/lib/thorui/tui-badge/tui-badge"
+    "tui-badge": "/components/tui-badge/tui-badge",
+    "tui-icon": "/components/tui-icon/tui-icon",
+    "login": "/components/login/login",
+    "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup"
   }
 }

@@ -25,7 +25,7 @@
 /* 透明度 */
 /* 文章场景相关 */
 .order-apply.data-v-41f47873 {
-  max-width: 70vw;
+  width: 70vw;
   border-radius: 2px 10px 10px 10px;
 }
 .my-text.data-v-41f47873 {

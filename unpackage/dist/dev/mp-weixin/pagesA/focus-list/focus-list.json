@@ -4,6 +4,7 @@
   "usingComponents": {
     "comheader": "/components/comheader/comheader",
     "mescroll-uni": "/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-uni",
-    "tui-modal": "/node-modules/thorui-uni/lib/thorui/tui-modal/tui-modal"
+    "tui-no-data": "/components/tui-no-data/tui-no-data",
+    "tui-modal": "/components/tui-modal/tui-modal"
   }
 }

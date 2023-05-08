@@ -1,26 +1,39 @@
 <script>
+	import { mapGetters,mapActions } from 'vuex'
+	// #ifdef  MP-WEIXIN
+	import TIM from 'tim-wx-sdk';
+	// import TIM from '@/pagesB/static/tim-wx-sdk.js'
+	// import COS from 'cos-wx-sdk-v5';
+	// #endif
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
-			// #ifdef MP-WEIXIN
-			uni.login({
-			  provider: 'weixin',
-			  success: function (loginRes) {
-			    console.log(loginRes);
-				 // if(uni.getUserProfile){
-					//  uni.getUserProfile({
-					//    desc: '获取用户信息',
-					//    success: function (infoRes) {
-					//  	console.log('用户昵称为：' + JSON.stringify(infoRes));
-					//    },
-					//    fail:function(err){
-					// 	   console.log(err);
-					//    }
-					//  });
-				 // }
-			  }
-			});
+			let options = {
+			  SDKAppID: 1400687654 // 接入时需要将0替换为您的即时通信 IM 应用的 SDKAppID
+			};
+			// #ifdef  MP-WEIXIN
+			// 创建 SDK 实例，`TIM.create()`方法对于同一个 `SDKAppID` 只会返回同一份实例
+			uni.$TUIKit = TIM.create(options); // SDK 实例通常用 tim 表示
+			// 设置 SDK 日志输出级别，详细分级请参见 <a href="https://web.sdk.qcloud.com/im/doc/zh-cn/SDK.html#setLogLevel">setLogLevel 接口的说明</a>
+			uni.$TUIKit.setLogLevel(0); // 普通级别，日志量较多，接入时建议使用
+			// #endif
+			// tim.setLogLevel(1); // release 级别，SDK 输出关键信息，生产环境时建议使用
+			// #ifndef H5
+			// uni.$TUIKit.registerPlugin({
+			// 	'cos-wx-sdk': COS
+			// });
+			// #endif
 			
+			// #ifdef MP-WEIXIN
+			wx.$TIM = uni.$TUIKit;
+			uni.$TUIKitTIM = TIM;
+			uni.$TUIKitEvent = TIM.EVENT;
+			uni.$TUIKitVersion = TIM.VERSION;
+			uni.$TUIKitTypes = TIM.TYPES; // 监听系统级事件
+			uni.$TUIKit.on(uni.$TUIKitEvent.SDK_READY, this.onSDKReady);
+			uni.$TUIKit.on(uni.$TUIKitEvent.SDK_NOT_READY, this.onSdkNotReady);
+			// #endif
+			// #ifdef MP-WEIXIN
 			 // 检测新版本
 			const updateManager = uni.getUpdateManager();
 			updateManager.onUpdateReady(function (res) {
@@ -34,9 +47,7 @@
 			      }
 			    }
 			  });
-			
 			});
-			
 			updateManager.onUpdateFailed(function (res) {
 				console.log(res)
 			  // 新的版本下载失败
@@ -89,21 +100,117 @@
 					this.$store.commit("setNavTop", navTop)
 					this.$store.commit("setWindowHeight", res.windowHeight)
 					this.$store.commit("setMenuButtonObject", menuButtonObject)
-					this.$store.commit("setSafeAreaBottom", Math.abs(res.safeAreaInsets.bottom))
+					this.$store.commit("setSafeAreaBottom", Math.abs(res.safeAreaInsets.bottom) > 0 ? Math.abs(res.safeAreaInsets.bottom): 10)
 					console.log("navHeight",res);
 				},
 				fail(err) {
 					console.log(err);
 				}
 			})
+			
+			//判断是否登录 获取用户信息
+			let token = this.tui.getToken()
+			let user = this.tui.getUser()
+			console.log(user)
+			if(token && user){
+				this.verificationTokenFn(token,user) // 验证token
+			}else {
+				this.$store.commit('setToken',null)
+				this.$store.commit('setUser',null)
+			}
 			//#endif
 		},
 		onShow: function() {
 			console.log('App Show')
-			
+			// 获取本地定位信息
+			let axis = this.tui.getStorage('axis')
+			if(axis){
+				this.$store.commit('setAxis',axis)
+			} else {
+				this.$store.commit('setAxis',null)
+			}
 		},
 		onHide: function() {
 			console.log('App Hide')
+		},
+		globalData: {
+			// userInfo: userID userSig token phone
+			userInfo: null,
+			// 个人信息
+			userProfile: null,
+			isTUIKit: true,
+			headerHeight: 0,
+			statusBarHeight: 0,
+			SDKAppID: '1400687654'
+		},
+		methods:{
+			...mapActions(['verificationToken','getUserSig']),
+			async verificationTokenFn(token,user){ // 验证token
+				try{
+					let res = await this.verificationToken()
+					if(res.code == 200){
+						this.$store.commit('setisLogin',true)
+						this.$store.commit('setToken',token)
+						this.$store.commit('setUser',user)
+						//开发登录im
+						uni.$TUIKit.login({
+							userID: user.id,
+							userSig: this.tui.getStorage('userSig')
+						}).then((imResponse) => {
+								console.log(imResponse.data,'登录成功'); // 登录成功
+							  if (imResponse.data.repeatLogin === true) {
+								// 标识账号已登录，本次登录操作为重复登录。v2.5.1 起支持
+								console.log(imResponse.data.errorInfo);
+							  }
+						}).catch((imError) => {
+							if(imError.code == 6206 || imError.code == 70003 || imError.code == 70001){
+								this.getUserSigFn(user.id)//UserSig 过期，请重新获取有效的 UserSig 后再重新登录
+							}
+							console.warn('login error:', imError.code); // 登录失败的相关信息
+						})
+					}
+				}catch(e){
+					this.$store.commit('setToken',null)
+					this.$store.commit('setUser',null)
+					uni.removeStorageSync('zhimiao_token')
+					uni.removeStorageSync('zhimiao_user')
+					uni.reLaunch({
+						url:'/pages/main'
+					})
+					//TODO handle the exception
+				}
+			},
+			async getUserSigFn(userID){
+				try{
+					let res = await this.getUserSig()
+					if(res.code == 200){
+						this.tui.setStorage('userSig',res.data)
+						console.log(userID)
+						uni.$TUIKit.login({
+							userID: userID,
+							userSig: res.data
+						}).then((imResponse) => {
+							console.log(imResponse.data); // 登录成功
+							  if (imResponse.data.repeatLogin === true) {
+							    // 标识账号已登录，本次登录操作为重复登录。v2.5.1 起支持
+							    console.log(imResponse.data.errorInfo);
+							  }
+						}).catch((imError) => {
+							console.warn('login error:', imError); // 登录失败的相关信息
+						})
+					}
+				}catch(e){
+					//TODO handle the exception
+				}
+			},
+			onSDKReady({name}) {
+					console.log(name,'初始化成功----------------')
+				  const isSDKReady = name === uni.$TUIKitEvent.SDK_READY ? true : false
+					this.$store.commit('setIsSDKReady',isSDKReady)
+			},
+			onSdkNotReady(){
+				console.log('onSdkNotReady')
+			}
 		}
 	}
 </script>

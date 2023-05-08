@@ -2,14 +2,12 @@
  * 常用方法封装 请求，文件上传等
  * @author echo. 
  **/
-
+import config from "../config/index.js"
+import store from '@/store/index.js';
 const tui = {
 	//接口地址
 	interfaceUrl: function() {
-		return 'https://www.thorui.cn'
-		//return 'https://test.thorui.cn'
-		//return 'https://uat.thorui.cn'
-		// return 'https://prod.thorui.cn'
+		return config.api
 	},
 	toast: function(text, duration, success) {
 		uni.showToast({
@@ -84,41 +82,56 @@ const tui = {
 		//接口请求
 		tui.loadding && uni.hideLoading();
 		tui.loadding = false;
-		if (!hideLoading) {
-			if (isDelay) {
-				tui.delayed = setTimeout(() => {
-					tui.loadding = true
-					tui.showLoading()
-					clearTimeout(tui.delayed)
-				}, 1000)
-			} else {
-				tui.loadding = true
-				tui.showLoading()
-			}
+		if (hideLoading) {
+			tui.loadding = true
+			tui.showLoading()
 		}
-
+		const headers = {
+			'Content-Type': 'application/x-www-form-urlencoded'
+		}
+		if (isForm) {
+			Object.assign(headers, {
+				'Content-Type': 'application/json'
+			});
+		}
+		if (tui.getToken()) {
+			Object.assign(headers, {
+				token: tui.getToken()
+			});
+		}
 		return new Promise((resolve, reject) => {
 			uni.request({
 				url: tui.interfaceUrl() + url,
 				data: postData,
-				header: {
-					'content-type': isForm ? 'application/x-www-form-urlencoded' :
-						'application/json',
-					'Authorization': tui.getToken()
-				},
-				method: method, //'GET','POST'
-				dataType: 'json',
+				header: headers,
+				method: method || "POST", //'GET','POST'
+				// dataType: 'json',
 				success: (res) => {
 					clearTimeout(tui.delayed)
 					tui.delayed = null;
-					if (tui.loadding && !hideLoading) {
+					if (tui.loadding && hideLoading) {
 						uni.hideLoading()
 					}
-					resolve(res.data)
+					if(res.data.code == 200){
+						resolve(res.data)
+					}else if(res.data.code == 401 || res.data.code == 405){ // token过期或被串改
+						uni.removeStorageSync('zhimiao_token')
+						uni.removeStorageSync('zhimiao_user')
+						uni.removeStorageSync('userSig')
+						store.commit('setToken',null)
+						store.commit('setUser',null)
+						uni.reLaunch({
+							url:'/pages/main'
+						})
+					} else {
+						reject(res.data)
+					}
+					
 				},
 				fail: (res) => {
 					clearTimeout(tui.delayed)
 					tui.delayed = null;
+					console.log(tui.interfaceUrl() + url)
 					tui.toast("网络不给力，请稍后再试~")
 					reject(res)
 				}
@@ -130,19 +143,18 @@ const tui = {
 	 * @param string url 请求地址
 	 * @param string src 文件路径
 	 */
-	uploadFile: function(url, src) {
+	uploadFile: function(url, src,formData) {
 		tui.showLoading()
 		return new Promise((resolve, reject) => {
+			console.log(url)
 			const uploadTask = uni.uploadFile({
 				url: tui.interfaceUrl() + url,
 				filePath: src,
-				name: 'imageFile',
+				name: 'upfile',
 				header: {
-					'Authorization': tui.getToken()
+					'token': tui.getToken()
 				},
-				formData: {
-					// sizeArrayText:""
-				},
+				formData:formData,
 				success: function(res) {
 					uni.hideLoading()
 					let d = JSON.parse(res.data.replace(/\ufeff/g, "") || "{}")
@@ -151,12 +163,12 @@ const tui = {
 						let fileObj = d.data;
 						resolve(fileObj)
 					} else {
-						that.toast(res.msg);
+						tui.toast(res.msg);
 					}
 				},
 				fail: function(res) {
 					reject(res)
-					that.toast(res.msg);
+					tui.toast(res.msg);
 				}
 			})
 		})
@@ -174,21 +186,45 @@ const tui = {
 	//设置用户信息
 	setUserInfo: function(mobile, token) {
 		//uni.setStorageSync("thorui_token", token)
-		uni.setStorageSync("thorui_mobile", mobile)
+		uni.setStorageSync("zhimiao_mobile", mobile)
 	},
 	//获取token
 	getToken() {
-		return uni.getStorageSync("thorui_token")
+		return uni.getStorageSync("zhimiao_token")
+	},
+	//获取当前用户信息
+	getUser() {
+		const user = uni.getStorageSync("zhimiao_user")
+		if(user){
+			return JSON.parse(user)
+		}
+		return null
+	},
+	// 设置缓存值
+	setStorage(key,data){
+		uni.setStorageSync(key,JSON.stringify(data))
+	},
+	// 获取缓存值
+	getStorage(key){
+		let data = uni.getStorageSync(key)
+		if(data){
+			return JSON.parse(data)
+		} else {
+			return null
+		}
 	},
 	//判断是否登录
 	isLogin: function() {
-		return uni.getStorageSync("thorui_mobile") ? true : false
+		if(uni.getStorageSync("zhimiao_token") && uni.getStorageSync("zhimiao_user")){
+			return true
+		}
+		return false
 	},
 	//跳转页面，校验登录状态
 	href(url, isVerify) {
 		if (isVerify && !tui.isLogin()) {
 			uni.navigateTo({
-				url: '/pages/common/login/login'
+				url: '/pagesA/login/login'
 			})
 		} else {
 			uni.navigateTo({
